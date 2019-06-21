@@ -8,6 +8,7 @@ import axios from 'axios';
 export const FETCH_SMURF = 'FETCH_SMURF';
 export const SUCCESS_SMURF = 'SUCCESS_SMURF';
 export const FAILED_SMURF = 'FAILED_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -29,5 +30,12 @@ export function getSmurf() {
           dispatch({ type: SUCCESS_SMURF, payload: res.data });
         })
         .catch(err => dispatch({ type: FAILED_SMURF }))
-}
-}
+  };
+};
+
+export const deleteSmurf = id => {
+  return {
+      type: DELETE_SMURF,
+      payload: id
+  };
+};

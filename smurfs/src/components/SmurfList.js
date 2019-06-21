@@ -1,13 +1,16 @@
 import React from 'react';
 
 import Smurf from "./Smurf";
-import { sumrfReducer } from '../reducers';
 
 const SmurfList = props => {
     return (
         <ul>
             {props.smurfs.map(smurf => {
-                return <Smurf key={sumrf.name} smurf={smurf} />
+                return <Smurf 
+                key={smurf.name} 
+                smurf={smurf}
+                height={smurf.height}
+                age={smurf.age} />
             })}
         </ul>
     );

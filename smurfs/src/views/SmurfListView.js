@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SmurfList } from '../components";
-import { getSmurfs } from '../actions';
+import { SmurfList } from '../components';
+import { getSmurf } from '../actions';
 
 class SmurfListView extends React.Component {
     constructor() {
@@ -10,7 +10,7 @@ class SmurfListView extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getSmurfs();
+        this.props.getSmurf();
     }
 
     render() {
@@ -20,7 +20,9 @@ class SmurfListView extends React.Component {
         return (
             <div className='SmurfList'>
                 <SmurfList smurfs={this.props.smurfs} />
+            <button>Add A Smurf</button>
             </div>
+            
         );
     }
 }
@@ -34,5 +36,5 @@ const mapStateToProps = state => {
 
     export default connect(
         mapStateToProps,
-        { getSmurfs }
+        { getSmurf }
     )(SmurfListView);

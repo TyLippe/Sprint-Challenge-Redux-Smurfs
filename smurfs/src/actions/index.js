@@ -7,6 +7,7 @@ import axios from 'axios';
 
 export const FETCH_SMURF = 'FETCH_SMURF';
 export const SUCCESS_SMURF = 'SUCCESS_SMURF';
+export const FAILED_SMURF = 'FAILED_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -20,13 +21,13 @@ export const SUCCESS_SMURF = 'SUCCESS_SMURF';
 */
 
 export function getSmurf() {
-  return dispatch = {
+  return dispatch => {
     dispatch({ type: FETCH_SMURF });
       axios
         .get(`http://localhost:3333/smurfs`)
         .then(res => {
-          dispatch({ type: SUCCESS_SMURF, payload: res.data.results });
+          dispatch({ type: SUCCESS_SMURF, payload: res.data });
         })
-        .catch(err => console.log("Error Type", err))
+        .catch(err => dispatch({ type: FAILED_SMURF }))
 }
 }

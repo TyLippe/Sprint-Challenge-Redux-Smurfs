@@ -22,7 +22,7 @@ const initialState = {
  }
 */
 
-export const sumrfReducer = (state = initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURF:
       return{

@@ -7,6 +7,8 @@ class Smurf extends React.Component {
     }
 
     render() {
+    console.log(this.props.index)
+    console.log(this.props.deleteSmurf)
     return ( 
         <li>
         <h1>{this.props.smurf.name}</h1>

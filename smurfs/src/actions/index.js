@@ -33,9 +33,10 @@ export function getSmurf() {
   };
 };
 
-export const deleteSmurf = id => {
+export function deleteSmurf(index) {
+  console.log("clicked")
   return {
       type: DELETE_SMURF,
-      payload: id
+      payload: index
   };
 };

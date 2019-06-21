@@ -30,6 +30,7 @@ export const smurfReducer = (state = initialState, action) => {
         error:'',
         fetchingSmurfs: true
       };
+      
     case SUCCESS_SMURF:
       return{
         ...state,
@@ -37,19 +38,22 @@ export const smurfReducer = (state = initialState, action) => {
         addingSmurf: true,
         smurfs: action.payload
       };
+
       case FAILED_SMURF:
         return {
           fetchingSmurfs: false,
           error: 'Smurfs not fetched!'
         };
+
       case DELETE_SMURF:
-        const filteredSmurf = state.smurf
+        const filteredSmurfs = state.smurf
           .slice(0, action.payload)
           .concat(state.smurfs.slice(action.payload + 1));
         return {
           ...state, 
-          smurfs: filteredSmurf
+          smurfs: filteredSmurfs
         };
+
     default:
       return state;
   }

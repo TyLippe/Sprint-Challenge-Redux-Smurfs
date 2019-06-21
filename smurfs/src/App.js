@@ -10,7 +10,12 @@ import './App.css';
  */
 class App extends Component {
   render() {
-    return <SmurfListView />
+    return (
+      <div className='AppContainer'>
+        <h1>My Smurf Collection</h1>
+        <SmurfListView />
+      </div>
+    )
   }
 }
 

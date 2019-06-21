@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { SmurfList } from '../components';
+import { SmurfForm } from '../components';
 import { getSmurf } from '../actions';
 
 class SmurfListView extends React.Component {
@@ -17,12 +18,11 @@ class SmurfListView extends React.Component {
         if (this.props.fetchingSmurfs) {
             console.log(this.props.smurfs)
         }
-        return (
-            <div className='SmurfList'>
-                <SmurfList smurfs={this.props.smurfs} />
-            <button>Add A Smurf</button>
-            </div>
-            
+    return (    
+        <div>
+            <SmurfList smurfs={this.props.smurfs} />
+            <SmurfForm smurf={this.props.smurfs} />
+        </div>
         );
     }
 }

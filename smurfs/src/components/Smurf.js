@@ -1,24 +1,26 @@
 import React from 'react';
 import { deleteSmurf } from '../actions';
+import { connect } from 'react-redux';
 
 class Smurf extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-    console.log(this.props.index)
-    console.log(this.props.deleteSmurf)
     return ( 
         <li>
         <h1>{this.props.smurf.name}</h1>
         <h2>{this.props.smurf.age} years old</h2>
         <h2>{this.props.smurf.height} tall</h2>
-        <button onClick={() => deleteSmurf(this.props.index)}>
-            Delete from Collection?
+        <button onClick={() => this.props.deleteSmurf(this.props.smurf.id)}>
+            Delete
         </button>
     </li>
 )}
 };
 
-export default Smurf;
+const mapStateToProps = () => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    { deleteSmurf }
+)(Smurf);

@@ -1,4 +1,4 @@
-import { FETCH_SMURF, SUCCESS_SMURF, FAILED_SMURF, DELETE_SMURF } from '../actions';
+import { FETCH_SMURF, SUCCESS_SMURF, FAILED_SMURF, DELETE_SMURF, ADD_SMURF } from '../actions';
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -35,7 +35,6 @@ export const smurfReducer = (state = initialState, action) => {
       return{
         ...state,
         fetchingSmurfs: false,
-        addingSmurf: true,
         smurfs: action.payload
       };
 
@@ -46,13 +45,18 @@ export const smurfReducer = (state = initialState, action) => {
         };
 
       case DELETE_SMURF:
-        const filteredSmurfs = state.smurf
-          .slice(0, action.payload)
-          .concat(state.smurfs.slice(action.payload + 1));
         return {
-          ...state, 
-          smurfs: filteredSmurfs
+          ...state,
+          error:'',
+          fetchingSmurfs: true
         };
+
+        case ADD_SMURF:
+          return{ 
+            ...state,
+            error:'',
+            fetchingSmurfs: true
+          }
 
     default:
       return state;

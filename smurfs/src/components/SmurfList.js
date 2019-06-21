@@ -5,13 +5,12 @@ import Smurf from "./Smurf";
 const SmurfList = props => {
     return (
         <ul>
-            {props.smurfs.map((smurf, index) => {
+            {props.smurfs.map(smurf => {
                 return <Smurf 
-                index={index} 
-                key={index}
-                smurf={smurf}
-                height={smurf.height}
-                age={smurf.age} />
+                    key={smurf.id}
+                    smurf={smurf}
+                    height={smurf.height}
+                    age={smurf.age} />
             })}
         </ul>
     );

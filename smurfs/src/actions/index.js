@@ -9,6 +9,7 @@ export const FETCH_SMURF = 'FETCH_SMURF';
 export const SUCCESS_SMURF = 'SUCCESS_SMURF';
 export const FAILED_SMURF = 'FAILED_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
+export const ADD_SMURF = 'ADD_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -29,14 +30,31 @@ export function getSmurf() {
         .then(res => {
           dispatch({ type: SUCCESS_SMURF, payload: res.data });
         })
-        .catch(err => dispatch({ type: FAILED_SMURF }))
+        .catch(err => dispatch({ type: FAILED_SMURF, payload: err}))
   };
 };
 
-export function deleteSmurf(index) {
-  console.log("clicked")
-  return {
-      type: DELETE_SMURF,
-      payload: index
+export function deleteSmurf(id) {
+  return dispatch => {
+    dispatch({ type: DELETE_SMURF });
+      axios
+        .delete(`http://localhost:3333/smurfs/${id}`)
+        .then(res => {
+          dispatch({ type: SUCCESS_SMURF, payload: res.data });
+        })
+        .catch(err => dispatch({ type: FAILED_SMURF, payload: err}))
   };
 };
+
+export function addSmurf(smurf) {
+  return dispatch => {
+    dispatch({ type: ADD_SMURF });
+      axios
+      .post("http://localhost:3333/smurfs", smurf)
+      .then((res) => {
+        dispatch({  type: SUCCESS_SMURF, payload: res.data})
+      console.log('New Smurf', smurf)
+  })
+      .catch(err => dispatch({ type: FAILED_SMURF, payload: err}))
+}
+}

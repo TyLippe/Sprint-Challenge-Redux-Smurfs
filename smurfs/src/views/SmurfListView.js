@@ -6,9 +6,6 @@ import { SmurfForm } from '../components';
 import { getSmurf } from '../actions';
 
 class SmurfListView extends React.Component {
-    constructor() {
-        super();
-    }
 
     componentDidMount() {
         this.props.getSmurf();
